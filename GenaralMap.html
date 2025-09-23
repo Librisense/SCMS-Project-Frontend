@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LibriSense Live Map</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      background-color: #f4f1e9;
+      font-family: 'Segoe UI', sans-serif;
+      color: #2c3e50;
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin: 1.2rem 0;
+      letter-spacing: 0.5px;
+    }
+
+    #map-container {
+      position: relative;
+      width: 640px;
+      height: 526px;
+      margin: 0 auto;
+      background-image: url('WhatsApp Image 2025-06-20 at 21.52.29_c91ebd5b.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 5px solid #333;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .zone {
+      position: absolute;
+      color: #fff;
+      font-weight: bold;
+      font-size: 0.95rem;
+      background-color: rgba(0, 0, 0, 0.55);
+      border-radius: 8px;
+      padding: 6px 12px;
+      pointer-events: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(2px);
+    }
+
+    #reading-zone {
+      top: 35px;
+      left: 40px;
+      width: 180px;
+      height: 120px;
+    }
+
+    #computer-zone {
+      top: 180px;
+      left: 40px;
+      width: 220px;
+      height: 140px;
+    }
+
+    #study-zone {
+      top: 40px;
+      left: 270px;
+      width: 320px;
+      height: 400px;
+    }
+
+    .user-marker {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background-color: #2ecc71;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+
+</head>
+
+<body>
+  <h2>📚 LibriSense: Real-Time Library Map</h2>
+
+  <div id="map-container">
+    <!-- Zones -->
+    <div class="zone reading-zone" id="reading-zone">Reflection Zone</div>
+    <div class="zone computer-zone" id="computer-zone">Research Zone</div>
+    <div class="zone study-zone" id="study-zone">Serenity Zone</div>
+ 
+
+    <!-- Markers (will be appended here dynamically) -->
+  </div>
+
+  <script type="module" src="script.js" defer></script>
+</body>
+
+</html>

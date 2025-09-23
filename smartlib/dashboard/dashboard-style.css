@@ -1,0 +1,329 @@
+/* Import the royal font */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap');
+
+body {
+  font-family: 'Merriweather', serif;
+  margin: 0;
+  padding: 0;
+  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'), #f4f1e9;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #2c3e50;
+}
+
+
+header {
+  background-color: #1b263b;
+  /* very dark blue */
+  color: #f0e6f6;
+  /* soft lavender */
+  padding: 1.5rem 2rem;
+  text-align: center;
+  letter-spacing: 1.2px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #f0e6f6;
+  /* royal purple */
+}
+
+main {
+  padding: 3rem 2rem;
+}
+
+.book-section {
+  margin-bottom: 2.5rem;
+}
+
+
+section h2 {
+  margin-bottom: 1rem;
+  color: #1b263b;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Fix alignment: make each section use a grid layout for books */
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+
+section {
+  width: 300px;
+  border-right: 1.7px solid rgba(174, 102, 102, 0.3); /* soft light line */
+  padding-right: 2rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+section:last-of-type {
+  border-right: none;
+}
+
+
+
+section .book-card {
+  margin-bottom: 1rem;
+}
+
+section>div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+
+.book-section h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #6c3483;
+  /* darker purple */
+  border-bottom: 2px solid #9b59b6;
+  padding-bottom: 0.4rem;
+}
+
+.book-list,
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.book-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(155, 89, 182, 0.15);
+  width: 180px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(155, 89, 182, 0.3);
+}
+
+/* 🔍 Search bar style */
+#search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.7rem 1rem;
+  margin: 1rem auto 2rem;
+  display: block;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Styled dropdown for genre filter */
+#category-filter {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.6rem 1rem;
+  margin: 1rem auto 2rem;
+  display: block;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.book-card h3 {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: #4a235a;
+  text-align: center;
+}
+
+.book-card p {
+  font-size: 0.9rem;
+  color: #7d6a9f;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.category-card {
+  background-color: #ede7f6;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(155, 89, 182, 0.1);
+  padding: 1.2rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #5b2c6f;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: 2px solid transparent;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-card:hover {
+  background-color: #d1c4e9;
+  border-color: #7e57c2;
+  transform: translateY(-4px);
+}
+
+/* Keep the rest of your CSS as is */
+
+.book-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 960px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #ffffffd5;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(155, 89, 182, 0.1);
+}
+
+.book-detail-container img {
+  width: 220px;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.book-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.book-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #4a235a;
+}
+
+.book-info p {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+.actions {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.actions button {
+  padding: 0.6rem 1.2rem;
+  background-color: #7e57c2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.actions button:hover {
+  background-color: #9575cd;
+  transform: translateY(-2px);
+}
+
+
+
+.form-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  background: #f5f5f5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+}
+
+form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+form button {
+  margin-top: 1.5rem;
+  background: #004080;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.zone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.zone-box {
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.zone-box.free {
+  background-color: #e0fbe0;
+  border-left: 5px solid #2ecc71;
+}
+
+.zone-box.occupied {
+  background-color: #fdeaea;
+  border-left: 5px solid #e74c3c;
+}
+
+.zone-box h4 {
+  margin-bottom: 0.5rem;
+}
+
+.zone-box button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #004080;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+}

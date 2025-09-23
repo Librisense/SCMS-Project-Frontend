@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Library Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Merriweather', serif;
+      background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'), #f4f1e9;
+      background-repeat: repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .book-form {
+      width: 850px;
+      height: auto;
+      display: flex;
+      background: linear-gradient(to right, #fffdf5 49%, #fffdf5 51%);
+      border-radius: 10px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      overflow: hidden;
+      position: relative;
+      border: 2px solid #b7a992;
+    }
+
+    .book-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: radial-gradient(circle, #c1b49a 20%, transparent 70%);
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .page {
+      flex: 1;
+      padding: 30px;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .page.left {
+      background: #fffdfa;
+      border-right: 1px dashed #c1b49a;
+    }
+
+    .page.right {
+      background: #fffdfa;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #5a4e3c;
+    }
+
+    p {
+      text-align: center;
+      color: #6b5a43;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .input-group i {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      color: #b59c7d;
+    }
+
+    .input-group input {
+      width: 90%;
+      max-width: 340px;
+      padding: 10px 10px 10px 38px;
+      border: 1px solid #c6bfa6;
+      border-radius: 5px;
+      font-size: 15px;
+      background-color: #fcfaf2;
+      color: #3b3226;
+      display: block;
+      margin: auto;
+    }
+
+    .input-group input:focus {
+      border-color: #a67c52;
+      outline: none;
+      box-shadow: 0 0 4px rgba(166, 124, 82, 0.3);
+    }
+
+    button {
+      width: 90%;
+      max-width: 340px;
+      padding: 10px;
+      background-color: #a67c52;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: block;
+      margin: 10px auto 0 auto;
+    }
+
+    button:hover {
+      background-color: #8d653f;
+    }
+
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .message.success {
+      color: #2d7c41;
+    }
+
+    .message.error {
+      color: #a12323;
+    }
+
+    @media (max-width: 768px) {
+      .book-form {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+      }
+
+      .book-form::before {
+        display: none;
+      }
+
+      .page.left {
+        border-right: none;
+        border-bottom: 1px dashed #c1b49a;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="book-form">
+    <!-- Left Page -->
+    <div class="page left">
+      <h2><i class="fas fa-book-open"></i> Welcome Reader</h2>
+      <p style="text-align: center;">Join our library to explore thousands of books.<br>Fill in your details on the next page.</p>
+    </div>
+
+    <!-- Right Page (Form) -->
+    <div class="page right">
+      <h2><i class="fas fa-feather-alt"></i> Register</h2>
+      <form id="registrationForm">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="fullName" placeholder="Full Name" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="email" placeholder="Email Address" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-phone-alt"></i>
+          <input type="tel" id="phone" placeholder="Phone Number" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-id-card-alt"></i>
+          <input type="text" id="memberId" placeholder="Membership ID" required />
+        </div>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="message" id="message"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfp-yredGhyaan3ly2BFT9sESlPNjsjHY",
+      authDomain: "iot-librisense.firebaseapp.com",
+      databaseURL: "https://iot-librisense-default-rtdb.firebaseio.com",
+      projectId: "iot-librisense",
+      storageBucket: "iot-librisense.firebasestorage.app",
+      messagingSenderId: "G-NFZQKEXCK0",
+      appId: "1:834080956081:web:42fe60eda9e038e8b1cc90"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    document.getElementById("registrationForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById("fullName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const memberId = document.getElementById("memberId").value.trim();
+      const message = document.getElementById("message");
+
+      if (!fullName || !email || !phone || !memberId) {
+        message.textContent = "Please fill in all fields.";
+        message.className = "message error";
+        return;
+      }
+
+      db.ref("library_members/" + memberId).set({
+        fullName,
+        email,
+        phone,
+        memberId,
+        registeredAt: new Date().toISOString()
+      })
+      .then(() => {
+        message.textContent = "🎉 Member registered successfully!";
+        message.className = "message success";
+        document.getElementById("registrationForm").reset();
+      })
+      .catch((error) => {
+        message.textContent = "❌ Error: " + error.message;
+        message.className = "message error";
+      });
+    });
+  </script>
+
+</body>
+</html>

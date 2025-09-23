@@ -1,0 +1,61 @@
+/* Container for the map and markers */
+#map-container {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  margin: 0 auto;
+  background-color: white; /* white background */
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Zone common styles */
+.zone {
+  position: absolute;
+  color: #333; /* dark text for visibility */
+  font-size: 14px;
+  padding: 6px;
+  font-weight: bold;
+  border-radius: 6px;
+  background-color: #d3d3d3; /* light gray for zones */
+  box-sizing: border-box;
+  border: 2px solid #aaa; /* subtle border for zone edges */
+  opacity: 1;
+  user-select: none;
+}
+
+/* Specific zone positions */
+.reading-zone {
+  top: 50px;
+  left: 50px;
+  width: 150px;
+  height: 100px;
+}
+
+.computer-zone {
+  top: 200px;
+  left: 50px;
+  width: 150px;
+  height: 120px;
+}
+
+.study-zone {
+  top: 50px;
+  left: 250px;
+  width: 180px;
+  height: 270px;
+}
+
+/* Red dot marker */
+.marker {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: red;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  transition: top 3s ease, left 3s ease;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>View Books</title>
+  <link rel="stylesheet" href="../dashboard/dashboard-style.css" />
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+  <!-- Firebase Config -->
+  <script src="../firebase-config.js"></script>
+
+  <!-- Book Loader Script -->
+  <script src="view-books.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Library Books</h1>
+  </header>
+
+  <main>
+    <!-- 🔍 Live Search -->
+    <input type="text" id="search-input" placeholder="Search by title, author, or zone" />
+
+    <!-- 🎯 Genre Filter -->
+    <select id="category-filter">
+      <option value="all">All Categories</option>
+      <option value="Dark & Mysterious">Dark & Mysterious</option>
+      <option value="Heartwarming & Uplifting">Heartwarming & Uplifting</option>
+      <option value="Emotional & Romantic">Emotional & Romantic</option>
+      <option value="Exciting & Fast-Paced">Exciting & Fast-Paced</option>
+      <option value="Thought-Provoking & Deep">Thought-Provoking & Deep</option>
+      <option value="Funny & Quirky">Funny & Quirky</option>
+      <option value="Magical & Imaginative">Magical & Imaginative</option>
+      <option value="Chilling & Suspenseful">Chilling & Suspenseful</option>
+    </select>
+
+    <div id="books-container" class="book-list"></div>
+  </main>
+</body>
+
+</html>
