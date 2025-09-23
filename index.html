@@ -1,295 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>How Are You Feeling Today?</title>
+  <title>Smart Campus Monitoring System</title>
   <style>
-    body,
-    html {
-      height: 100%;
+    /* Reset */
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .container {
-      background: white;
-      padding: 20px 30px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      max-width: 480px;
-      width: 100%;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://images.unsplash.com/photo-1581092334446-2d92d6a6a6b8?auto=format&fit=crop&w=1600&q=80") 
+        no-repeat center/cover;
+      z-index: 0;
+      filter: brightness(0.45) blur(3px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
       text-align: center;
+      max-width: 900px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      animation: fadeIn 1.2s ease-in-out;
     }
 
-    h2 {
-      margin-bottom: 24px;
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.3;
+      color: #fff;
     }
 
-    .emoji-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 40px;
+      color: #ddd;
+      opacity: 0.95;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
       gap: 20px;
-      margin-bottom: 24px;
-    }
-
-    .emoji-box {
-      cursor: pointer;
-      border: 2px solid transparent;
-      border-radius: 12px;
-      padding: 15px 0;
-      user-select: none;
-      transition: border-color 0.3s ease, background-color 0.3s ease;
-    }
-
-    .emoji-box.selected {
-      border-color: #2196f3;
-      background-color: #e3f2fd;
-    }
-
-    .emoji {
-      font-size: 48px;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .label {
-      font-weight: bold;
-      font-size: 16px;
-      color: #333;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      background-color: #2196f3;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #1976d2;
-    }
-
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.4);
       justify-content: center;
-      align-items: center;
     }
 
-    .modal-content {
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 500px;
-      width: 90%;
-      text-align: left;
+    .btn {
+      padding: 16px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, #2196f3, #1976d2);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.35);
     }
 
-    .modal-content h3 {
-      margin-top: 0;
-      color: #333;
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
     }
 
-    .book-list {
-      margin: 15px 0;
-      padding-left: 20px;
+    .btn.alt {
+      background: linear-gradient(135deg, #4caf50, #2e7d32);
     }
 
-    .modal button {
-      margin-top: 20px;
+    footer {
+      background: #0f2027;
+      color: #bbb;
+      text-align: center;
+      padding: 16px;
+      font-size: 0.9rem;
+      position: absolute;
+      bottom: 0;
       width: 100%;
-      background-color: #4caf50;
     }
 
-    .modal button:hover {
-      background-color: #388e3c;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .btn {
+        padding: 14px 20px;
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <h2>How Are You Feeling Today?</h2>
-    <form id="moodForm">
-      <div class="emoji-grid" id="emojiGrid">
-        <div class="emoji-box" data-value="calm">
-          <span class="emoji">😌</span>
-          <span class="label">Calm</span>
-        </div>
-        <div class="emoji-box" data-value="need-help">
-          <span class="emoji">❓</span>
-          <span class="label">Need Help</span>
-        </div>
-        <div class="emoji-box" data-value="focus">
-          <span class="emoji">🎯</span>
-          <span class="label">Focus</span>
-        </div>
-        <div class="emoji-box" data-value="relax">
-          <span class="emoji">🛋️</span>
-          <span class="label">Relax</span>
-        </div>
-        <div class="emoji-box" data-value="happy">
-          <span class="emoji">😊</span>
-          <span class="label">Happy</span>
-        </div>
-        <div class="emoji-box" data-value="tired">
-          <span class="emoji">😴</span>
-          <span class="label">Tired</span>
-        </div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Smart Campus Monitoring System</h1>
+      <p>Welcome to the next generation of campus management.<br>
+      Real-time monitoring, smarter energy use, and student safety in one place.</p>
+      <div class="btn-group">
+        <a href="./scms/dashboard/admin.html" class="btn">Login as Admin</a>
+        <a href="./scms/dashboard/student.html" class="btn alt">Login as Student</a>
       </div>
-      <button type="submit">Go to Map</button>
-    </form>
-  </div>
-
-  <!-- Modal for suggested books -->
-  <div class="modal" id="bookModal">
-    <div class="modal-content">
-      <h3>Suggested Books for You</h3>
-      <ul class="book-list" id="bookList"></ul>
-      <button id="proceedBtn">Continue to Map</button>
     </div>
-  </div>
+  </section>
 
-  <script>
-    const emojiGrid = document.getElementById('emojiGrid');
-    let selectedMood = null;
-
-    const moodBooks = {
-      calm: [
-        "Meditations – Marcus Aurelius",
-        "The Little Book of Calm",
-        "The Things You Can See Only When You Slow Down",
-        "The Art of Stillness",
-        "Ikigai",
-        "Peace Is Every Step",
-        "The Power of Now",
-        "Wherever You Go, There You Are",
-        "The Book of Joy",
-        "Quiet: The Power of Introverts"
-      ],
-      "need-help": [
-        "Atomic Habits",
-        "The Subtle Art of Not Giving a F*ck",
-        "You Are a Badass",
-        "Think Like a Monk",
-        "Grit",
-        "Can’t Hurt Me",
-        "Deep Work",
-        "Feel the Fear and Do It Anyway",
-        "The Magic of Thinking Big",
-        "The Confidence Gap"
-      ],
-      focus: [
-        "Deep Work – Cal Newport",
-        "Make Time",
-        "Flow",
-        "Digital Minimalism",
-        "The One Thing",
-        "Essentialism",
-        "Hyperfocus",
-        "Your Brain at Work",
-        "Peak",
-        "Mind for Numbers"
-      ],
-      relax: [
-        "The Alchemist",
-        "Eleanor Oliphant Is Completely Fine",
-        "The Midnight Library",
-        "A Man Called Ove",
-        "Big Magic",
-        "The Secret Garden",
-        "The Wind in the Willows",
-        "The Book Thief",
-        "Anne of Green Gables",
-        "The Little Prince"
-      ],
-      happy: [
-        "The Happiness Project",
-        "The Art of Happiness",
-        "The Joy of Living",
-        "Happier",
-        "The Book of Awesome",
-        "The Gifts of Imperfection",
-        "Happiness Advantage",
-        "Born a Crime",
-        "Good Vibes, Good Life",
-        "The Light We Carry"
-      ],
-      tired: [
-        "Why We Sleep",
-        "Rest: Why You Get More Done When You Work Less",
-        "The Sleep Solution",
-        "How to Do Nothing",
-        "Burnout: The Secret to Unlocking the Stress Cycle",
-        "Essentialism",
-        "Eat That Frog",
-        "The 5 AM Club",
-        "The Power of Rest",
-        "When: The Scientific Secrets of Perfect Timing"
-      ]
-    };
-
-    emojiGrid.addEventListener('click', e => {
-      const box = e.target.closest('.emoji-box');
-      if (!box) return;
-      document.querySelectorAll('.emoji-box.selected').forEach(el => {
-        el.classList.remove('selected');
-      });
-      box.classList.add('selected');
-      selectedMood = box.getAttribute('data-value');
-    });
-
-    document.getElementById('moodForm').addEventListener('submit', e => {
-      e.preventDefault();
-      if (!selectedMood) {
-        alert('Please select a mood before proceeding.');
-        return;
-      }
-
-      // Show suggested books modal
-      const books = moodBooks[selectedMood] || [];
-      const list = document.getElementById('bookList');
-      list.innerHTML = '';
-      books.forEach(book => {
-        const li = document.createElement('li');
-        li.textContent = book;
-        list.appendChild(li);
-      });
-
-      document.getElementById('bookModal').style.display = 'flex';
-    });
-
-    document.getElementById('proceedBtn').addEventListener('click', () => {
-      sessionStorage.setItem('userMood', selectedMood);
-      window.location.href = 'personal-map.html';
-    });
-  </script>
-
-  <div style="position: absolute; bottom: 20px; right: 20px;">
-    <button onclick="window.location.href='smartlib/dashboard/dashboard.html'">Go to Dashboard</button>
-
-  </div>
-
-
-
+  <footer>
+    © 2025 Smart Campus Monitoring System | HNDSE Final Year Project
+  </footer>
 </body>
-
 </html>
