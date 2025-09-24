@@ -1,0 +1,157 @@
+/* Page container */
+.assign-container {
+    max-width: 700px;
+    margin: 140px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.assign-title {
+    font-size: 1.8rem;
+    color: #1e293b;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Tag card */
+.tag-card {
+    background: #f1f5f9;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tag-card h3 {
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+.uid-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2563eb;
+}
+
+/* Book info */
+.book-info {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f9fafb;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.book-info h3 {
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.book-info p {
+    margin: 4px 0;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+/* Assign section */
+.assign-section {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.assign-section.hidden {
+    display: none;
+}
+
+/* Inputs */
+.form-label {
+    font-weight: 500;
+    color: #374151;
+}
+
+.form-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: #fff;
+    transition: border 0.2s ease;
+}
+
+.form-input:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Primary Button */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    /* smooth gradient */
+    color: #fff;
+    border: none;
+
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    box-shadow: 0 6px 14px rgba(29, 78, 216, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 8px rgba(29, 78, 216, 0.25);
+}
+
+.btn-primary svg,
+.btn-primary i {
+    margin-right: 8px;
+    /* spacing if you use icons */
+}
+
+
+/* Messages */
+.message {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.message:empty {
+    display: none;
+}
+
+.message.success {
+    color: #16a34a;
+}
+
+.message.error {
+    color: #dc2626;
+}
+
+
+/* Simulate box */
+.simulate-box {
+    text-align: center;
+    margin-bottom: 20px;
+}

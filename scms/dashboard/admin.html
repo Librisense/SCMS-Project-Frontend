@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SCMS – Admin Dashboard</title>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -46,7 +51,8 @@
       transition: background 0.3s;
     }
 
-    .nav li:hover, .nav li.active {
+    .nav li:hover,
+    .nav li.active {
       background: #334155;
     }
 
@@ -96,7 +102,7 @@
       background: #fff;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       text-align: center;
       transition: transform 0.2s ease;
     }
@@ -139,6 +145,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Sidebar -->
   <aside class="sidebar">
@@ -146,9 +153,22 @@
     <ul class="nav">
       <li class="active">Overview</li>
       <li>Attendance</li>
-      <li>Library</li>
+
+      <li>
+        Library
+        <ul style="list-style:none; padding-left:15px; margin-top:6px;">
+          <li><a href="../books/view-books.html" style="color:#fff; text-decoration:none;">View Books</a></li>
+          <li><a href="../books/add-book.html" style="color:#fff; text-decoration:none;">Add Book</a></li>
+          <li><a href="../books/book-assign.html" style="color:#fff; text-decoration:none;">Book Assign</a></li>
+        </ul>
+      </li>
+
+
       <li>Labs</li>
-      <li>Energy Control</li>
+      <li>
+        <a href="../energy/energy-control.html" style="color:#fff; text-decoration:none;">Energy Control</a>
+      </li>
+
       <li>Emergency Alerts</li>
       <li>Reports</li>
     </ul>
@@ -203,4 +223,5 @@
     updateTime();
   </script>
 </body>
+
 </html>

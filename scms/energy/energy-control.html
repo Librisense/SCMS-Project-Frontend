@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCMS – Energy Control</title>
+    <link rel="stylesheet" href="energy-control.css" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>SCMS Admin</h2>
+        <ul class="nav">
+            <li><a href="../dashboard/admin.html">Overview</a></li>
+            <li>Attendance</li>
+
+            <li>
+                Library
+                <ul style="list-style:none; padding-left:15px; margin-top:6px;">
+                    <li><a href="../books/view-books.html" style="color:#fff; text-decoration:none;">View Books</a></li>
+                    <li><a href="../books/add-book.html" style="color:#fff; text-decoration:none;">Add Book</a></li>
+                    <li><a href="../books/book-assign.html" style="color:#fff; text-decoration:none;">Book Assign</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>Labs</li>
+            <li class="active">
+                <a href="./energy-control.html" style="color:#fff; text-decoration:none;">Energy Control</a>
+            </li>
+            <li>Emergency Alerts</li>
+            <li>Reports</li>
+        </ul>
+    </aside>
+
+
+    <div class="main">
+        <!-- Header -->
+        <header>
+            <h1>Energy Control & Savings</h1>
+            <p>Monitor, control, and analyze energy usage across campus.</p>
+        </header>
+
+        <!-- Quick Stats Cards -->
+        <section class="stats">
+            <div class="card">
+                <h3>Lights Saved</h3>
+                <p id="lightsSaved">0h</p>
+            </div>
+            <div class="card">
+                <h3>AC Saved</h3>
+                <p id="acSaved">0h</p>
+            </div>
+            <div class="card">
+                <h3>Energy Saved</h3>
+                <p id="energySaved">0 kWh</p>
+            </div>
+            <div class="card">
+                <h3>Cost Saved</h3>
+                <p id="costSaved">LKR 0</p>
+            </div>
+        </section>
+
+        <!-- Device Control Table -->
+        <section class="table-section">
+            <h2>Device Control Panel</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Room / Lab</th>
+                        <th>Lights</th>
+                        <th>AC</th>
+                        <th>Last Changed</th>
+                        <th>Occupancy</th>
+                    </tr>
+                </thead>
+                <tbody id="deviceTable">
+                    <!-- JS will load rows here -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts">
+            <div class="chart-card">
+                <h3>Usage vs Occupancy</h3>
+                <canvas id="usageChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Energy Saved (7 days)</h3>
+                <canvas id="energyChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Wasted vs Saved</h3>
+                <canvas id="wasteChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <section class="alerts">
+            <h2>Insights & Alerts</h2>
+            <ul id="alertsList">
+                <li>No alerts yet.</li>
+            </ul>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="energy-control.js"></script>
+</body>
+
+</html>

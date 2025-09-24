@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +13,8 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    body,
+    html {
       height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
@@ -33,11 +35,11 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url("https://images.unsplash.com/photo-1581092334446-2d92d6a6a6b8?auto=format&fit=crop&w=1600&q=80") 
-        no-repeat center/cover;
+      background: url("https://worldarchitecture.org/cdnimgfiles/extuploadc/centreforcreativedesign.jpg") no-repeat center/cover;
       z-index: 0;
-      filter: brightness(0.45) blur(3px);
+      filter: brightness(0.75) blur(3px);
     }
+
 
     .hero-content {
       position: relative;
@@ -48,7 +50,7 @@
       background: rgba(255, 255, 255, 0.08);
       border-radius: 20px;
       backdrop-filter: blur(12px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
       animation: fadeIn 1.2s ease-in-out;
     }
 
@@ -84,17 +86,17 @@
       transition: all 0.3s ease;
       text-decoration: none;
       color: #fff;
-      background: linear-gradient(135deg, #2196f3, #1976d2);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+      background: linear-gradient(135deg, #2f4557, #9ec3e8);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
     }
 
     .btn:hover {
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
     }
 
     .btn.alt {
-      background: linear-gradient(135deg, #4caf50, #2e7d32);
+      background: linear-gradient(135deg, #315b32, #abe4ae);
     }
 
     footer {
@@ -109,17 +111,26 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 2rem;
       }
+
       .hero-content p {
         font-size: 1rem;
       }
+
       .btn {
         padding: 14px 20px;
         font-size: 1rem;
@@ -127,12 +138,13 @@
     }
   </style>
 </head>
+
 <body>
   <section class="hero">
     <div class="hero-content">
       <h1>Smart Campus Monitoring System</h1>
       <p>Welcome to the next generation of campus management.<br>
-      Real-time monitoring, smarter energy use, and student safety in one place.</p>
+        Real-time monitoring, smarter energy use, and student safety in one place.</p>
       <div class="btn-group">
         <a href="./scms/dashboard/admin.html" class="btn">Login as Admin</a>
         <a href="./scms/dashboard/student.html" class="btn alt">Login as Student</a>
@@ -144,4 +156,5 @@
     © 2025 Smart Campus Monitoring System | HNDSE Final Year Project
   </footer>
 </body>
+
 </html>

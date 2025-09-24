@@ -22,7 +22,7 @@
         /* Sidebar */
         .sidebar {
             width: 220px;
-            background: #1e40af;
+            background: linear-gradient(180deg, #1b263b 0%, #0d1940 100%);
             color: #fff;
             height: 100vh;
             display: flex;
@@ -30,31 +30,74 @@
             position: fixed;
             left: 0;
             top: 0;
-            padding-top: 20px;
+            box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+            padding: 20px 0;
         }
 
+        /* Logo / Title */
         .sidebar h2 {
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            color: #bfdbfe;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+            color: #f3f4f6;
         }
 
+        /* Navigation */
         .nav {
             list-style: none;
+            padding: 0;
+            margin: 0;
             flex: 1;
         }
 
         .nav li {
-            padding: 14px 18px;
-            cursor: pointer;
-            transition: background 0.3s;
+            margin: 6px 12px;
         }
 
-        .nav li:hover,
-        .nav li.active {
-            background: #1e3a8a;
+        .nav li a {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #e0e7ff;
+            text-decoration: none;
+            transition: all 0.25s ease;
         }
+
+        .nav li a i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Hover + Active states */
+        .nav li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateX(4px);
+        }
+
+        .nav li a.active {
+            background: #2563eb;
+            color: #fff;
+            font-weight: 600;
+            box-shadow: inset 2px 0 0 #0f61be;
+        }
+
+        /* Footer (optional for version/info) */
+        .sidebar-footer {
+            padding: 12px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #93c5fd;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+
 
         /* Main */
         .main {
@@ -127,7 +170,7 @@
         .map {
             background: #e5e7eb;
             border: 2px dashed #9ca3af;
-            height: 260px;
+            height: 70vh;
             border-radius: 12px;
             display: flex;
             justify-content: center;
@@ -138,12 +181,13 @@
 
         /* Emergency Button */
         .emergency-btn {
-            margin-top: 20px;
-            width: 100%;
+            margin-left: 1200px;
+            margin-top: 200px;
+            width: 15%;
             padding: 14px;
             font-size: 1.1rem;
             font-weight: bold;
-            background: #dc2626;
+            background: #4e99de;
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -152,11 +196,11 @@
         }
 
         .emergency-btn:hover {
-            background: #b91c1c;
+            background: #334887;
         }
 
         footer {
-            background: #1e3a8a;
+            background: #0d1940;
             color: #ddd;
             text-align: center;
             padding: 12px;
@@ -173,7 +217,6 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.55);
-            display: flex;
             justify-content: center;
             align-items: center;
         }
@@ -327,6 +370,80 @@
         }
 
         /* orange for low attendance */
+
+
+        .scroll-box {
+            max-height: 200px;
+            /* adjust for subjects */
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 6px;
+            /* for scrollbar space */
+        }
+
+        .scroll-table {
+            max-height: 250px;
+            /* adjust for recent sessions */
+            overflow-y: auto;
+            display: block;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+
+        .scroll-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .scroll-table th,
+        .scroll-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .scroll-table th {
+            background: #f9fafb;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+
+        .map {
+            margin-left: 120px;
+            margin-top: 40px;
+            border: 2px solid #9ca3af;
+            border-radius: 12px;
+            overflow: auto;
+            /* scroll when zoomed */
+            height: 60vh;
+            /* fill most of screen height */
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f3f4f6;
+        }
+
+        .map-image {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        .map-image.zoomed {
+            transform: scale(1.8);
+            /* adjust zoom */
+            cursor: zoom-out;
+        }
+
+        #mapCard {
+            align-items: center;
+            height: 200px;
+            max-width: 300px;
+            margin: 70px auto;
+        }
     </style>
 </head>
 
@@ -335,13 +452,17 @@
     <aside class="sidebar">
         <h2>SCMS Student</h2>
         <ul class="nav">
-            <li class="active">Overview</li>
-            <li>My Attendance</li>
-            <li>Library</li>
-            <li>Labs</li>
-            <li>Emergency</li>
+            <li><a href="#" class="active"><i class="fas fa-home"></i> Overview</a></li>
+            <li><a href="#"><i class="fas fa-user-check"></i> My Attendance</a></li>
+            <li><a href="../books/view-books.html"><i class="fas fa-book"></i> View Books</a></li>
+            <li><a href="#"><i class="fas fa-flask"></i> Labs</a></li>
+            <li><a href="#"><i class="fas fa-exclamation-triangle"></i> Emergency</a></li>
         </ul>
+        <div class="sidebar-footer">
+            © 2025 SCMS
+        </div>
     </aside>
+
 
     <!-- Main -->
     <div class="main">
@@ -360,27 +481,34 @@
                     <p>92%</p>
                 </div>
 
-                <div class="card">
+                <div class="card" id="booksCard" style="cursor:pointer;">
                     <h3>Borrowed Books</h3>
                     <p>3</p>
                 </div>
+
                 <div class="card" id="labCard" style="cursor:pointer;">
                     <h3>Available Lab Seats</h3>
                     <p style="font-size:1.3rem; color:#2563eb;">Click to View</p>
                 </div>
-                <div class="card">
+                <div class="card" id="alertsCard" style="cursor:pointer;">
                     <h3>Alerts Triggered</h3>
-                    <p style="color:#dc2626;">0</p>
+                    <p style="color:#dc2626;">3</p>
                 </div>
+
             </div>
 
-            <!-- Map -->
-            <div class="map">
-                Campus Map – Student View
+            <!-- Map Trigger Card -->
+            <div class="card" id="mapCard" style="cursor:pointer; background-color: #e6eef6;">
+                <h3 style="margin-top: 40px;" >Navigate Yourself</h3>
+                <p style="color:#2563eb;">Click to Open Map</p>
             </div>
+
+
+
+
 
             <!-- Emergency -->
-            <button class="emergency-btn">🚨 Request Help</button>
+            <button class="emergency-btn">Support</button>
             <!-- Lab Availability Modal -->
             <div id="labModal" class="modal">
                 <div class="modal-content">
@@ -426,65 +554,207 @@
 
                     <!-- Subject Breakdown -->
                     <h3 style="margin-bottom:10px;">By Subject</h3>
-                    <div class="progress-wrap">
-                        <label>IoT</label>
-                        <div class="progress">
-                            <div class="progress-bar" style="width:95%">95%</div>
+                    <div class="scroll-box">
+                        <div class="progress-wrap">
+                            <label>IoT</label>
+                            <div class="progress">
+                                <div class="progress-bar" style="width:95%">95%</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="progress-wrap">
-                        <label>Database Systems</label>
-                        <div class="progress">
-                            <div class="progress-bar" style="width:88%">88%</div>
+                        <div class="progress-wrap">
+                            <label>Database Systems</label>
+                            <div class="progress">
+                                <div class="progress-bar" style="width:88%">88%</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="progress-wrap">
-                        <label>Software Engineering</label>
-                        <div class="progress">
-                            <div class="progress-bar low" style="width:70%">70%</div>
+                        <div class="progress-wrap">
+                            <label>Software Engineering</label>
+                            <div class="progress">
+                                <div class="progress-bar low" style="width:70%">70%</div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <label>Networking</label>
+                            <div class="progress">
+                                <div class="progress-bar" style="width:85%">85%</div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <label>Mathematics</label>
+                            <div class="progress">
+                                <div class="progress-bar" style="width:90%">90%</div>
+                            </div>
                         </div>
                     </div>
 
+
                     <!-- Recent History -->
                     <h3 style="margin:20px 0 10px;">Recent Sessions</h3>
-                    <table class="lab-table">
-                        <tr>
-                            <th>Date</th>
-                            <th>Subject</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr>
-                            <td>2025-09-20</td>
-                            <td>IoT</td>
-                            <td style="color:green;">Present</td>
-                        </tr>
-                        <tr>
-                            <td>2025-09-18</td>
-                            <td>DBMS</td>
-                            <td style="color:green;">Present</td>
-                        </tr>
-                        <tr>
-                            <td>2025-09-17</td>
-                            <td>Software Eng</td>
-                            <td style="color:red;">Absent</td>
-                        </tr>
-                        <tr>
-                            <td>2025-09-15</td>
-                            <td>IoT</td>
-                            <td style="color:green;">Present</td>
-                        </tr>
-                        <tr>
-                            <td>2025-09-14</td>
-                            <td>Software Eng</td>
-                            <td style="color:green;">Present</td>
-                        </tr>
-                    </table>
+                    <div class="scroll-table">
+                        <table>
+                            <tr>
+                                <th>Date</th>
+                                <th>Subject</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr>
+                                <td>2025-09-20</td>
+                                <td>IoT</td>
+                                <td style="color:green;">Present</td>
+                            </tr>
+                            <tr>
+                                <td>2025-09-18</td>
+                                <td>DBMS</td>
+                                <td style="color:green;">Present</td>
+                            </tr>
+                            <tr>
+                                <td>2025-09-17</td>
+                                <td>Software Eng</td>
+                                <td style="color:red;">Absent</td>
+                            </tr>
+                            <tr>
+                                <td>2025-09-15</td>
+                                <td>IoT</td>
+                                <td style="color:green;">Present</td>
+                            </tr>
+                            <tr>
+                                <td>2025-09-14</td>
+                                <td>Software Eng</td>
+                                <td style="color:green;">Present</td>
+                            </tr>
+                            <tr>
+                                <td>2025-09-12</td>
+                                <td>Networking</td>
+                                <td style="color:green;">Present</td>
+                            </tr>
+                            <tr>
+                                <td>2025-09-10</td>
+                                <td>Mathematics</td>
+                                <td style="color:red;">Absent</td>
+                            </tr>
+                            <tr>
+                                <td>2025-09-08</td>
+                                <td>IoT</td>
+                                <td style="color:green;">Present</td>
+                            </tr>
+                            <tr>
+                                <td>2025-09-06</td>
+                                <td>Software Eng</td>
+                                <td style="color:red;">Absent</td>
+                            </tr>
+                            <tr>
+                                <td>2025-09-05</td>
+                                <td>DBMS</td>
+                                <td style="color:green;">Present</td>
+                            </tr>
+                        </table>
+                    </div>
+
 
                     <!-- Warning -->
                     <p style="margin-top:15px; color:#b91c1c; font-weight:600;">⚠️ Attendance in Software Engineering is
                         below 80%.</p>
                 </div>
             </div>
+
+
+            <!-- Borrowed Books Modal -->
+            <div id="booksModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" id="closeBooks">&times;</span>
+                    <h2>Borrowed Books</h2>
+
+                    <!-- Summary -->
+                    <div style="text-align:center; margin-bottom:20px;">
+                        <h3 style="color:#1e3a8a;">You have borrowed 3 books</h3>
+                        <p style="font-size:1rem; color:#555;">Maximum allowed: 5</p>
+                    </div>
+
+                    <!-- Book List -->
+                    <div class="scroll-table">
+                        <table>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Borrowed</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr>
+                                <td>The Alchemist</td>
+                                <td>Paulo Coelho</td>
+                                <td>2025-09-10</td>
+                                <td>2025-09-24</td>
+                                <td style="color:green;">On Time</td>
+                            </tr>
+                            <tr>
+                                <td>Deep Work</td>
+                                <td>Cal Newport</td>
+                                <td>2025-09-01</td>
+                                <td>2025-09-15</td>
+                                <td style="color:orange;">Due Soon</td>
+                            </tr>
+                            <tr>
+                                <td>Database Systems</td>
+                                <td>C.J. Date</td>
+                                <td>2025-08-20</td>
+                                <td>2025-09-05</td>
+                                <td style="color:red;">Overdue</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Alerts -->
+                    <p style="margin-top:15px; color:#b91c1c; font-weight:600;">⚠️ You have 1 overdue book. Please
+                        return it immediately.</p>
+                </div>
+            </div>
+
+
+
+
+            <!-- Alerts Modal -->
+            <div id="alertsModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" id="closeAlerts">&times;</span>
+                    <h2>Student Alerts</h2>
+
+                    <!-- Library Alerts -->
+                    <h3 style="margin:10px 0;">⚠️ Library Alerts</h3>
+                    <ul style="margin-left:18px; margin-bottom:15px;">
+                        <li>Your book <b>Database Systems</b> is overdue by 5 days.</li>
+                        <li>Your book <b>Deep Work</b> is due in 2 days.</li>
+                    </ul>
+
+                    <!-- Attendance Alerts -->
+                    <h3 style="margin:10px 0;">⚠️ Attendance Alerts</h3>
+                    <ul style="margin-left:18px; margin-bottom:15px;">
+                        <li>Attendance in <b>Software Engineering</b> is only 70%.</li>
+                        <li>⚠️ Warning: You may not meet exam eligibility if attendance drops further.</li>
+                    </ul>
+
+                    <!-- Misuse Alerts -->
+                    <h3 style="margin:10px 0;">⚠️ Misuse Alerts</h3>
+                    <ul style="margin-left:18px;">
+                        <li>The book <b>UI/UX Standards</b> was removed without borrowing — please return it to the
+                            bookshelf.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Map Modal -->
+            <div id="mapModal" class="modal">
+                <div class="modal-content" style="max-width: 80%; height: 80%;">
+                    <span class="close-btn" id="closeMap">&times;</span>
+                    <h2>Campus Navigation</h2>
+                    <div class="map">
+                        <img src="../../assets/images/campus-map.png" alt="Campus Map" class="map-image">
+                    </div>
+                </div>
+            </div>
+
+
+
 
 
         </div>
@@ -537,6 +807,63 @@
             if (e.target === attendanceModal) attendanceModal.style.display = "none";
         });
 
+
+
+
+        // Borrowed Books Modal Handling
+        const booksCard = document.getElementById("booksCard");
+        const booksModal = document.getElementById("booksModal");
+        const closeBooks = document.getElementById("closeBooks");
+
+        booksCard.addEventListener("click", () => {
+            booksModal.style.display = "flex";
+        });
+        closeBooks.addEventListener("click", () => {
+            booksModal.style.display = "none";
+        });
+        window.addEventListener("click", (e) => {
+            if (e.target === booksModal) booksModal.style.display = "none";
+        });
+
+
+
+        // Alerts Modal Handling
+        const alertsCard = document.getElementById("alertsCard");
+        const alertsModal = document.getElementById("alertsModal");
+        const closeAlerts = document.getElementById("closeAlerts");
+
+        alertsCard.addEventListener("click", () => {
+            alertsModal.style.display = "flex";
+        });
+        closeAlerts.addEventListener("click", () => {
+            alertsModal.style.display = "none";
+        });
+        window.addEventListener("click", (e) => {
+            if (e.target === alertsModal) alertsModal.style.display = "none";
+        });
+
+
+
+        // Map Modal Handling
+        const mapCard = document.getElementById("mapCard");
+        const mapModal = document.getElementById("mapModal");
+        const closeMap = document.getElementById("closeMap");
+
+        mapCard.addEventListener("click", () => {
+            mapModal.style.display = "flex";
+        });
+        closeMap.addEventListener("click", () => {
+            mapModal.style.display = "none";
+        });
+        window.addEventListener("click", (e) => {
+            if (e.target === mapModal) mapModal.style.display = "none";
+        });
+
+        // Map Zoom (works inside modal)
+        const mapImg = document.querySelector('.map-image');
+        mapImg.addEventListener('click', () => {
+            mapImg.classList.toggle('zoomed');
+        });
 
 
 

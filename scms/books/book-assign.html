@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Assign – SCMS Admin</title>
+    <link rel="stylesheet" href="../dashboard/dashboard-style.css">
+    <link rel="stylesheet" href="book-assign-style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="assign-container">
+            <h2 class="assign-title">Book Assign</h2>
+
+            <!-- Simulate Button -->
+            <div class="simulate-box">
+                <button id="simulateBtn" class="btn-primary">Simulate Tag Scan</button>
+            </div>
+
+            <!-- Scanned Tag Display -->
+            <div class="tag-card">
+                <h3>Scanned Tag UID</h3>
+                <p id="tagUid" class="uid-text">Waiting for scan...</p>
+            </div>
+
+            <!-- Book Info -->
+            <div id="bookInfo" class="book-info"></div>
+
+            <!-- Assign Section -->
+            <div id="assignSection" class="assign-section hidden">
+                <label for="bookSelect" class="form-label">Select Book:</label>
+                <select id="bookSelect" class="form-input"></select>
+                <button id="assignBtn" class="btn-primary">Assign Book</button>
+            </div>
+
+            <p id="msg" class="message"></p>
+        </div>
+    </div>
+
+    <script src="../firebase-config.js"></script>
+    <script src="book-assign.js"></script>
+</body>
+
+</html>
